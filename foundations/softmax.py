@@ -11,13 +11,15 @@ class Solution:
         
         ln = len(z)             # length of the array
         mx = np.max(z)             # maximum logit in array, z
-        res = [0] * ln
         # find denominator of softmax function
         sigma_z = np.sum(np.exp(z-mx))
 
-        for i in range(ln):
-            z_i = np.exp(z[i] - mx)/sigma_z
-            res[i] = np.round(z_i, 4)
+        # for i in range(ln):
+        #     z_i = np.exp(z[i] - mx)/sigma_z
+        #     res[i] = np.round(z_i, 4)
+
+        res = np.round(np.exp(z-mx)/sigma_z, 4)
+        
 
         return res
 
